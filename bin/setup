@@ -1,6 +1,7 @@
+# rubocop:disable all
+
 #!/usr/bin/env ruby.exe
 
-# rubocop:disable all
 
 
 
