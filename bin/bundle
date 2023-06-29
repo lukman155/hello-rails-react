@@ -1,0 +1,22 @@
+def cli_arg_version
+  return unless invoked_as_script?
+  return unless 'update'.start_with?(ARGV.first || ' ')
+
+  update_index = nil
+  bundler_version = nil
+
+  ARGV.each_with_index do |arg, index|
+    bundler_version = extract_bundler_version(arg, update_index, index)
+    break if bundler_version
+
+    update_index = index if arg =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
+  end
+
+  bundler_version
+end
+
+def extract_bundler_version(arg, update_index, index)
+  return unless update_index && update_index.succ == index && arg =~ Gem::Version::ANCHORED_VERSION_PATTERN
+
+  arg
+end
