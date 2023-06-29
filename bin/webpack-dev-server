@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ruby
 
 ENV['RAILS_ENV'] ||= ENV['RACK_ENV'] || 'development'
@@ -9,7 +10,6 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile',
 
 require 'bundler/setup'
 
-
 require 'webpacker'
 require 'webpacker/dev_server_runner'
 
@@ -17,3 +17,5 @@ APP_ROOT = File.expand_path('..', __dir__)
 Dir.chdir(APP_ROOT) do
   Webpacker::DevServerRunner.run(ARGV)
 end
+
+# rubocop:disable all
